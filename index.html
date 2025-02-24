@@ -3,34 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông Tin Khách Hàng</title>
+    <title>Cập Nhật Hotline & Email</title>
 </head>
 <body>
 
-    <h1>Thông Tin Khách Hàng</h1>
-    <p><strong>ID:</strong> <span id="customer_id"></span></p>
-    <p><strong>Tên:</strong> <span id="name"></span></p>
-    <p><strong>Email:</strong> <span id="email"></span></p>
-    <p><strong>Số Điện Thoại:</strong> <span id="phone"></span></p>
-    <p><strong>Địa Chỉ:</strong> <span id="address"></span></p>
+    <div class="hotline-header-center">
+        <a href="tel:" id="hotline1" class="hotline_css">Hotline 1:</a>
+        <div class="hotline-header-center">
+            <a href="tel:" id="hotline2" class="hotline_css">Hotline 2:</a>
+        </div>
+        <div class="hotline-header-center">
+            <a href="mailto:" id="email" class="email_css">Email:</a>
+        </div>
+    </div>
 
     <script>
-        // URL chứa JSON
+        // URL JSON
         const url = "https://andangphuoc.github.io/infor/inf.json";
 
         // Fetch dữ liệu từ URL
         fetch(url)
-            .then(response => response.json()) // Chuyển đổi response thành JSON
+            .then(response => response.json()) // Chuyển đổi dữ liệu JSON
             .then(data => {
-                // Gán dữ liệu vào các thẻ HTML
-                document.getElementById("customer_id").textContent = data.customer_id;
-                document.getElementById("name").textContent = data.name;
-                document.getElementById("email").textContent = data.email;
-                document.getElementById("phone").textContent = data.phone;
-                
-                // Gộp địa chỉ thành một chuỗi và hiển thị
-                document.getElementById("address").textContent = 
-                    `${data.address.street}, ${data.address.city}, ${data.address.country}`;
+                // Cập nhật số hotline
+                let hotline1 = document.getElementById("hotline1");
+                hotline1.textContent = `Hotline 1: ${data.hotline1}`;
+                hotline1.href = `tel:${data.hotline1}`;
+
+                let hotline2 = document.getElementById("hotline2");
+                hotline2.textContent = `Hotline 2: ${data.hotlien2}`;
+                hotline2.href = `tel:${data.hotlien2}`;
+
+                // Cập nhật email
+                let email = document.getElementById("email");
+                email.textContent = `Email: ${data.email}`;
+                email.href = `mailto:${data.email}`;
             })
             .catch(error => console.error("Lỗi khi lấy dữ liệu:", error));
     </script>
