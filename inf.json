@@ -1,0 +1,13 @@
+{
+    "customer_id": "12345",
+    "name": "Nguyễn Văn A",
+    "email": "nguyenvana@example.com",
+    "phone": "+84901234567",
+    "address": {
+      "street": "123 Đường ABC",
+      "city": "Hà Nội",
+      "country": "Việt Nam"
+    }
+   
+  }
+  
